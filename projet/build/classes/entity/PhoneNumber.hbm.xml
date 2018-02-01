@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="entity">
+    <class name="PhoneNumber" table="PHONENUMBER">
+        <id name="id" type="long" access="field">
+            <column name="PHONENUMBERID"/>
+            <generator class="increment"/>
+        </id>
+
+
+        <property name="number" type="java.lang.String" not-null="true">
+            <column name="NUMBER"/>
+        </property>
+
+        <property name="kind" type="java.lang.String">
+            <column name="KIND"/>
+        </property>
+
+
+        <many-to-one name="contact" column="CONTACTID" not-null="false"/>
+    </class>
+</hibernate-mapping>

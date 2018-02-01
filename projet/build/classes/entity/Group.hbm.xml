@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="entity">
+    <class name="ContactGroup" table="CONTACTGROUP">
+        <id name="id" type="long" access="field">
+            <column name="GROUPID"/>
+            <generator class="increment"/>
+        </id>
+
+
+        <property name="name" type="java.lang.String" not-null="true">
+            <column name="NAME"/>
+        </property>
+
+
+        <set name="contacts" table="CONTACT_GROUP" inverse="true" lazy="true" cascade="save-update">
+            <key>
+                <column name="GROUPID"/>
+            </key>
+            <many-to-many class="Contact" column="CONTACTID"/>
+        </set>
+    </class>
+</hibernate-mapping>
